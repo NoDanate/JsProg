@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><body><div id="d1"><div id="d2"></div><h1>Header</h1><p>paragraph<br><span>Span</span></p><button onclick="getNodes()">Get nodes</button>
+    </div>
+
+    <script>
+        function getNodes(){
+            var c = document.documentElement.childNodes;
+            var msg="";
+
+            for (let index = 0; index < c.length; index++) {
+                let d = c[index];
+                msg+= (+index+1) + ". " + d.tagName + "(" + d.nodeName + ") <br>";
+                
+                if(d.hasChildNodes()){
+                    let e=d.childNodes;
+                    for (let j = 0; j < e.length; j++) {
+                        let f = e[j];
+                        msg+= '&nbsp;'+(+j+1) + ". " + f.tagName + "(" + f.nodeName + ") <br>";
+                        
+                        if(f.hasChildNodes()){
+                            let w=f.childNodes;
+                            for (let q = 0; q < w.length; q++) {
+                            let b = w[q];
+                            msg+= '&nbsp;&nbsp;'+(+q+1) + ". " + b.tagName + "(" + b.nodeName + ") <br>";
+                            }
+                        }
+                    }
+                }
+            }
+            window.d2.innerHTML = msg;
+        }
+    </script>
+</body>
+</html>

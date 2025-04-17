@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frames</title>
+</head>
+<body>
+    <iframe src="about:blank"></iframe>
+    <iframe src="about:blank"></iframe>
+    <iframe src="about:blank" name="frame3"></iframe>
+
+    <button onclick="window.frames[0].location='https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API'">Вики</button>
+    <button onclick="window.frames[1].location='https://videoglaz.ru/blog/chto-takoe-adas-usovershenstvovannaya-sistema-pomoschi-voditelyu'">Adas</button>
+    <button onclick="window.frames.frame3.location='https://bds.lt/ru/Новости/sто-такое-adas-и-для-чего-это-калибровочное-оборудование-adas'">Новости</button>
+</body>
+</html>

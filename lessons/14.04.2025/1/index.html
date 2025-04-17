@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: burlywood;
+            position: relative;
+            height: 2000px;
+            margin: 0;
+        }
+        div{
+            background-color: cadetblue;
+            height: 50px;
+            width: 100px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body onclick="moveObject(event)">
+
+    <div id="blueSquare"></div>
+    <script>
+        function moveObject(e){
+            blueSquare.style.left=e.pageX+'px';
+            blueSquare.style.top=e.pageY+'px';
+            blueSquare.style["background-color"];
+            blueSquare.style.backgroundColor 
+        }
+    </script>
+</body>
+</html>

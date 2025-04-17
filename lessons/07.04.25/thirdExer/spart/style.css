@@ -1,0 +1,43 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+    background-color: #161617;
+    color:  #c8cbce;
+}
+
+.news{
+    background-color: #232324;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    
+}
+
+.news h1{
+    margin: 0;
+    font-size: 38px;
+}
+
+.news .tags{
+    color: #284c90;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.news .date{
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.news p{
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+h2{
+    padding: 20px;
+    width: 50%;
+    margin: auto auto;
+    text-align: center;
+}
