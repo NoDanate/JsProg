@@ -1,0 +1,9 @@
+{
+    "name" : "Ilia",
+    "surname" : "Kataev",
+    "data" : [1,32,1,23,4],
+    "data2" : {
+        "passport" : "765500 3454",
+        "inn" : "12312312312"
+    }
+}
