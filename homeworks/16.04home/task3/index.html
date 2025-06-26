@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Футбольное поле</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="field">
+        <div id="ball"></div>
+    </div>
+
+    <script>
+        const field = document.getElementById('field');
+        const ball = document.getElementById('ball');
+        
+        field.addEventListener('click', function(e) {
+            const fieldRect = field.getBoundingClientRect();
+            const ballSize = 100;
+            
+            let x = e.clientX - fieldRect.left - ballSize / 2;
+            let y = e.clientY - fieldRect.top - ballSize / 2;
+            
+            x = Math.max(0, Math.min(x, fieldRect.width - ballSize));
+            y = Math.max(0, Math.min(y, fieldRect.height - ballSize));
+            
+            ball.style.left = x + 'px';
+            ball.style.top = y + 'px';
+        });
+    </script>
+</body>
+</html>

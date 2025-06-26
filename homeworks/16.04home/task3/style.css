@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#field {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: green;
+}
+#ball {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease;
+}

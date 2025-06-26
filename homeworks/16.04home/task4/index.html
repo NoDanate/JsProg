@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Светофор</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="traffic-light">
+        <div class="light" id="red"></div>
+        <div class="light" id="yellow"></div>
+        <div class="light" id="green"></div>
+    </div>
+    <button id="switchBtn">Переключить</button>
+
+    <script>
+        const lights = ['red', 'yellow', 'green'];
+        let currentLight = -1;
+        const switchBtn = document.getElementById('switchBtn');
+        
+        function switchLight() {
+            if (currentLight >= 0) {
+                document.getElementById(lights[currentLight]).style.backgroundColor = '#555';
+            }
+            
+            currentLight = (currentLight + 1) % lights.length;
+            document.getElementById(lights[currentLight]).style.backgroundColor = lights[currentLight];
+        }
+        
+        switchBtn.addEventListener('click', switchLight);
+        
+        switchLight();
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ввод имени</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <label>Enter your name (name can't contain digits):</label><br>
+    <input type="text" id="nameInput">
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        
+        nameInput.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[0-9]/g, '');
+        });
+    </script>
+</body>
+</html>

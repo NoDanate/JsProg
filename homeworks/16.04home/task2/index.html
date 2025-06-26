@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Модальное окно</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="openBtn">Открыть</button>
+    
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+        <p>Это модальное окно с текстом.</p>
+        <button id="closeBtn">Закрыть</button>
+    </div>
+
+    <script>
+        const openBtn = document.getElementById('openBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const modal = document.getElementById('modal');
+        const overlay = document.getElementById('overlay');
+        
+        openBtn.addEventListener('click', function() {
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+        
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
