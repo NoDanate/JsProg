@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Дерево директорий</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        li {
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        li:hover {
+            font-weight: bold;
+        }
+        .collapsed > ul {
+            display: none;
+        }
+        .folder::before {
+            content: "📁 ";
+        }
+    </style>
+</head>
+<body>
+    <ul id="tree">
+        <li class="folder">This PC
+            <ul>
+                <li class="folder">Local Disk (C:)
+                    <ul>
+                        <li>Program Files</li>
+                        <li>Users</li>
+                        <li>Windows</li>
+                    </ul>
+                </li>
+                <li class="folder">Local Disk (D:)
+                    <ul>
+                        <li>New Folder 1</li>
+                        <li>New Folder 2</li>
+                        <li>New Folder 3</li>
+                    </ul>
+                </li>
+                <li class="folder">Local Disk (E:)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        const tree = document.getElementById('tree');
+        
+        tree.addEventListener('click', function(e) {
+            if (e.target.classList.contains('folder')) {
+                e.target.classList.toggle('collapsed');
+            }
+        });
+    </script>
+</body>
+</html>

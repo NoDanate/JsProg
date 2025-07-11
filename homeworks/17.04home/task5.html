@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Сортировка таблицы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+        th:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <table id="people-table">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+                <th>Company</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mark</td>
+                <td>Zuckerberg</td>
+                <td>34</td>
+                <td>Facebook</td>
+            </tr>
+            <tr>
+                <td>Larry</td>
+                <td>Page</td>
+                <td>45</td>
+                <td>Google</td>
+            </tr>
+            <tr>
+                <td>Timothy</td>
+                <td>Cook</td>
+                <td>57</td>
+                <td>Apple</td>
+            </tr>
+            <tr>
+                <td>Bill</td>
+                <td>Gates</td>
+                <td>62</td>
+                <td>Microsoft</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const table = document.getElementById('people-table');
+        const headers = table.querySelectorAll('th');
+        const tbody = table.querySelector('tbody');
+        
+        headers.forEach((header, index) => {
+            header.addEventListener('click', () => {
+                const rows = Array.from(tbody.querySelectorAll('tr'));
+                const isNumeric = index === 2;
+                
+                rows.sort((a, b) => {
+                    const aValue = a.cells[index].textContent;
+                    const bValue = b.cells[index].textContent;
+                    
+                    if (isNumeric) {
+                        return Number(aValue) - Number(bValue);
+                    } else {
+                        return aValue.localeCompare(bValue);
+                    }
+                });
+                
+                tbody.innerHTML = '';
+                rows.forEach(row => tbody.appendChild(row));
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список книг</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        li.selected {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <ul id="bookList">
+        <li>"JavaScript for Kids: A Playful Introduction to Programming" by Nick Morgan</li>
+        <li>"Eloquent JavaScript: A Modern Introduction to Programming" by Marijn Haverbeke</li>
+        <li>"JavaScript: The Good Parts" by Douglas Crockford</li>
+        <li>"You Don't Know JS" by Kyle Simpson</li>
+        <li>"Programming JavaScript Applications: Robust Web Architecture with Node, HTML5, and Modems JS Libraries" by Eric Elliott</li>
+        <li>"Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript" by David Herman</li>
+        <li>"JavaScript: The Definitive Guide" by David Flanagan</li>
+    </ul>
+
+    <script>
+        const bookList = document.getElementById('bookList');
+        let lastSelected = null;
+        
+        bookList.addEventListener('click', function(e) {
+            if (e.target.tagName === 'LI') {
+                const items = Array.from(this.children);
+                const currentItem = e.target;
+                
+                if (e.ctrlKey) {
+                    currentItem.classList.toggle('selected');
+                    lastSelected = currentItem;
+                } else if (e.shiftKey && lastSelected) {
+                    const start = items.indexOf(lastSelected);
+                    const end = items.indexOf(currentItem);
+                    const range = [Math.min(start, end), Math.max(start, end)];
+                    
+                    items.forEach((item, index) => {
+                        item.classList.toggle('selected', index >= range[0] && index <= range[1]);
+                    });
+                } else {
+                    items.forEach(item => item.classList.remove('selected'));
+                    currentItem.classList.add('selected');
+                    lastSelected = currentItem;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

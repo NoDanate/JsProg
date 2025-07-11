@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Изменение размера блока</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #resizable {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border: 2px solid #333;
+            padding: 20px;
+            overflow: hidden;
+            resize: none;
+        }
+        #resize-handle {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            cursor: nwse-resize;
+        }
+    </style>
+</head>
+<body>
+    <div id="resizable">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        <div id="resize-handle"></div>
+    </div>
+
+    <script>
+        const resizable = document.getElementById('resizable');
+        const handle = document.getElementById('resize-handle');
+        let isResizing = false;
+        
+        handle.addEventListener('mousedown', function(e) {
+            isResizing = true;
+            e.preventDefault();
+        });
+        
+        document.addEventListener('mousemove', function(e) {
+            if (!isResizing) return;
+            
+            const rect = resizable.getBoundingClientRect();
+            const newWidth = e.clientX - rect.left;
+            const newHeight = e.clientY - rect.top;
+            
+            resizable.style.width = `${newWidth}px`;
+            resizable.style.height = `${newHeight}px`;
+        });
+        
+        document.addEventListener('mouseup', function() {
+            isResizing = false;
+        });
+    </script>
+</body>
+</html>
