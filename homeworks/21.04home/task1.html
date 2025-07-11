@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форум сообщений</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .message {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .message-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .message-time {
+            color: #666;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        .message-content {
+            line-height: 1.6;
+        }
+        .add-message {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Форум сообщений</h1>
+    
+    <div id="messages-container">
+        <div class="message">
+            <div class="message-header">
+                Name <span class="message-time">10:05:00 22.03.2018</span>
+            </div>
+            <div class="message-content">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            </div>
+        </div>
+    </div>
+
+    <div class="add-message">
+        <h2>Добавить новое сообщение</h2>
+        <form id="message-form">
+            <div class="form-group">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Ваше сообщение:</label>
+                <textarea id="content" required></textarea>
+            </div>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('message-form');
+        const messagesContainer = document.getElementById('messages-container');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const content = document.getElementById('content').value;
+            
+            addMessage(name, content);
+            
+            form.reset();
+        });
+        
+        function addMessage(name, content) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            
+            const now = new Date();
+            const timeString = now.toLocaleTimeString() + ' ' + now.toLocaleDateString();
+            
+            messageDiv.innerHTML = `
+                <div class="message-header">
+                    ${name} <span class="message-time">${timeString}</span>
+                </div>
+                <div class="message-content">
+                    ${content}
+                </div>
+            `;
+            
+            messagesContainer.prepend(messageDiv);
+        }
+    </script>
+</body>
+</html>

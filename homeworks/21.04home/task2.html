@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест на подсчет букв</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: none;
+        }
+        .question.active {
+            display: block;
+        }
+        .options {
+            margin: 15px 0;
+        }
+        .option {
+            margin: 10px 0;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #result {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            font-size: 18px;
+        }
+        .progress {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест на подсчет букв</h1>
+    <div class="progress">Вопрос 1 из 2</div>
+    
+    <div id="quiz-container">
+        <div class="question active" id="q1">
+            <h3>1) How many letters are there in the word "Hello"?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q1" value="5"> 5
+                </label>
+                <label class="option">
+                    <input type="radio" name="q1" value="2"> 2
+                </label>
+            </div>
+            <button class="next-btn">Next</button>
+        </div>
+
+        <div class="question" id="q2">
+            <h3>2) How many letters are there in the word "World"?</h3>
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="q2" value="4"> 4
+                </label>
+                <label class="option">
+                    <input type="radio" name="q2" value="5"> 5
+                </label>
+            </div>
+            <button class="finish-btn">Finish</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+        const nextButton = document.querySelector('.next-btn');
+        const finishButton = document.querySelector('.finish-btn');
+        const resultDiv = document.getElementById('result');
+        const progressDiv = document.querySelector('.progress');
+        
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        const totalQuestions = questions.length;
+        const correctAnswersMap = {
+            'q1': '5',
+            'q2': '5'
+        };
+
+        function updateProgress() {
+            progressDiv.textContent = `Вопрос ${currentQuestion + 1} из ${totalQuestions}`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            const selectedOption = document.querySelector(`input[name="q${currentQuestion + 1}"]:checked`);
+            if (selectedOption && selectedOption.value === correctAnswersMap[`q${currentQuestion + 1}`]) {
+                correctAnswers++;
+            }
+
+            questions[currentQuestion].classList.remove('active');
+            currentQuestion++;
+            questions[currentQuestion].classList.add('active');
+            updateProgress();
+            
+            if (currentQuestion === totalQuestions - 1) {
+                nextButton.style.display = 'none';
+                finishButton.style.display = 'inline-block';
+            }
+        });
+
+        finishButton.addEventListener('click', () => {
+            const selectedOption = document.querySelector(`input[name="q${currentQuestion + 1}"]:checked`);
+            if (selectedOption && selectedOption.value === correctAnswersMap[`q${currentQuestion + 1}`]) {
+                correctAnswers++;
+            }
+
+            questions[currentQuestion].classList.remove('active');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `<strong>Result:</strong> ${correctAnswers} correct answers to ${totalQuestions} questions.`;
+        });
+
+        finishButton.style.display = 'none';
+        updateProgress();
+    </script>
+</body>
+</html>
