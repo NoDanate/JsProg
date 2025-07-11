@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forms</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Телефонный справочник</h1>
+        <form id="phonebookForm" action="#" method="get">
+            <div class="form-group">
+                <label for="name" class="required">ФИО</label>
+                <input type="text" id="name" name="name" required>
+                <div class="error" id="nameError">Пожалуйста, введите ФИО</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone" class="required">Телефон</label>
+                <input type="tel" id="phone" name="phone" required>
+                <div class="error" id="phoneError">Пожалуйста, введите корректный номер телефона</div>
+            </div>
+
+            <div class="form-group">
+                <label>Даты</label>
+                <div class="dates-container" id="datesContainer">
+                </div>
+                <div class="add-date-form">
+                    <select id="dateType">
+                        <option value="birthday">День рождения</option>
+                        <option value="profession">День профессии</option>
+                        <option value="meeting">День первой встречи</option>
+                        <option value="anniversary">Годовщина</option>
+                    </select>
+                    <input type="date" id="dateValue">
+                    <button type="button" id="addDateBtn">Добавить дату</button>
+                </div>
+                <div class="error" id="dateError">Дата не может быть в будущем</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Файлы</label>
+                <div class="files-container" id="filesContainer">
+                </div>
+                <div class="add-file-form">
+                    <input type="file" id="fileUpload" multiple>
+                    <textarea id="fileCaption" placeholder="Описание файла"></textarea>
+                    <button type="button" id="addFileBtn">Добавить файл</button>
+                </div>
+            </div>
+            <!--
+            <div class="form-group">
+                <label for="birthdate">Дата рождения</label>
+                <input type="date" id="birthdate" name="birthdate">
+                <div class="error" id="birthdateError">Дата рождения не может быть в будущем</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="photo">Фотография</label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+                <img id="preview" src="#" alt="Предпросмотр фотографии">
+                <div class="error" id="photoError">Пожалуйста, выберите изображение (JPG, PNG)</div>
+            </div>
+            -->
+            
+            <div class="form-group">
+                <label for="email">Электронная почта</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="emailError">Пожалуйста, введите корректный email</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="website">Сайт</label>
+                <input type="url" id="website" name="website">
+                <div class="error" id="websiteError">Пожалуйста, введите корректный URL</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="secret">Секретное слово</label>
+                <input type="password" id="secret" name="secret">
+                <div class="error" id="secretError">Секретное слово должно содержать не менее 6 символов</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="color">Любимый цвет</label>
+                <input type="color" id="color" name="color" value="#3498db">
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="reminder" name="reminder" value="yes">
+                <label for="reminder">Напоминать о дне рождения</label>
+            </div>
+            
+            <div class="buttons">
+                <input type="reset" value="Сбросить">
+                <input type="submit" value="Сохранить">
+            </div>
+        </form>
+        
+        <div id="formData"></div>
+    </div>
+
+
+<script src="index.js"></script>
+</body>
+</html>
